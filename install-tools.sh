@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "Run install tools"
 sleep 2
-tools_to_install=('tmux' 'htop');
+tools_to_install=(tmux htop zsh);
+#plugins=(git docker npm python sudo systemd web-search)
 echo "Total tools: ${#array[*]}";
 
 check_tool(){
