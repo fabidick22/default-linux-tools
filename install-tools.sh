@@ -2,7 +2,7 @@
 
 echo "Run install tools"
 sleep 1
-tools_to_install=(git vim tmux htop sed zsh glances nmap screen i3lock-fancy);
+tools_to_install=(git vim awk tmux htop sed zsh glances nmap screen i3lock-fancy);
 #tools_to_install=(zsh);
 plugins_zsh=(git docker npm python sudo systemd web-search)
 
