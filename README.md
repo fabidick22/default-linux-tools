@@ -1,7 +1,7 @@
 # default-linux-tools
 Useful tools for linux environments
 
-#Run Script
+# Run Script
 ```
 /bin/bash install-tools.sh
 or 
