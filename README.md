@@ -14,6 +14,9 @@ Useful tools for linux environments
 - screen 
 - i3lock-fancy
 
+# Requirements
+- User with sudo
+
 # Run Script
 ```
 /bin/bash install-tools.sh
