@@ -78,7 +78,7 @@ add_plugins_oh_my_zsh(){
 
 
 install_requirements(){
-    echo "Install Requirements\n"
+    echo "Install Requirements"
     for tool in ${tools_requirements[*]}
     do
         check_tool_and_install $tool
@@ -87,7 +87,7 @@ install_requirements(){
 
 install_requirements
 
-echo "Total tools: ${#tools_to_install[@]} \n";
+echo "Total tools: ${#tools_to_install[@]}";
 
 for tool in ${tools_to_install[*]}
 do
