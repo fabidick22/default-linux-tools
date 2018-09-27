@@ -5,17 +5,16 @@ sleep 1
 echo "Updating repositories.."
 sudo apt update
 
-tools_to_install=(git vim tmux htop sed zsh glances nmap screen i3lock-fancy);
-#tools_to_install=(zsh);
+tools_requirements=(sudo git sed make wget curl)
+tools_to_install=(vim tmux htop zsh nmap screen i3lock-fancy glances);
 plugins_zsh=(git docker npm python sudo systemd web-search)
 
-echo "Total tools: ${#tools_to_install[@]}";
 
 function echo_fail {
   # echo first argument in red
-  echo "\e[31m✘ ${1} No Installed"
+  printf "\e[31m✘ ${1} No Installed"
   # reset colours back to normal
-  echo -e "\033[0m \n"
+  printf "\033[0m \n"
 }
 
 # display a message in green with a tick by it
@@ -23,12 +22,12 @@ function echo_fail {
 # echo echo_fail "Yes"
 function echo_pass {
   # echo first argument in green
-  echo "\e[32m✔ ${1} Installed"
+  printf "\e[32m✔ ${1} Installed"
   # reset colours back to normal
-  echo -e "\033[0m \n"
+  printf "\033[0m \n"
 }
 
-check_tool(){
+check_tool_and_install(){
     if type "$1" &>/dev/null; then
         echo_pass $1
     else
@@ -62,7 +61,7 @@ install_lock(){
 
 install_oh_my_zsh(){
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    source ~/.zshrc
+    source ~/.zshrc | zsh
     add_plugins_oh_my_zsh
 }
 
@@ -77,7 +76,20 @@ add_plugins_oh_my_zsh(){
     sed -i "s/  git/  $name_plugins/g" "$ruta"
 }
 
+
+install_requirements(){
+    echo "Install Requirements\n"
+    for tool in ${tools_requirements[*]}
+    do
+        check_tool_and_install $tool
+    done
+}
+
+install_requirements
+
+echo "Total tools: ${#tools_to_install[@]} \n";
+
 for tool in ${tools_to_install[*]}
 do
-    check_tool $tool
+    check_tool_and_install $tool
 done
