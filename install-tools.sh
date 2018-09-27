@@ -3,10 +3,23 @@
 echo "Run install tools"
 sleep 1
 echo "Updating repositories.."
-sudo apt update
 
-tools_requirements=(sudo git sed make wget curl)
-tools_to_install=(vim tmux htop zsh nmap screen i3lock-fancy glances);
+comprobate_gpl(){
+    local return_=1
+    which $1 >/dev/null 2>&1 || { local return_=0; }
+    echo "$return_"
+}
+
+yum=$(comprobate_gpl "yum")
+apt=$(comprobate_gpl "apt")
+if [ $apt -eq "1" ]; then
+    sudo apt update
+  elif [ $yum -eq "1" ]; then
+    sudo yum update
+fi
+
+tools_requirements=(git sed make wget curl)
+tools_to_install=(vim tmux htop nmap screen i3lock-fancy glances zsh);
 plugins_zsh=(git docker npm python sudo systemd web-search)
 
 
@@ -32,7 +45,11 @@ check_tool_and_install(){
         echo_pass $1
     else
         echo_fail $1
-        sudo apt install $1 -y
+        if [  $apt -eq "1" ]; then
+            sudo apt install $1 -y
+          elif [  $yum -eq "1" ]; then
+            sudo yum install $1 -y
+        fi
         if [ "$1" = "zsh" ]; then
             install_oh_my_zsh
         elif [ "$1" = "i3lock-fancy" ]; then
@@ -84,6 +101,7 @@ install_requirements(){
         check_tool_and_install $tool
     done
 }
+
 
 install_requirements
 
