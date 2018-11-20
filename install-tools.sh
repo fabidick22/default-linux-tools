@@ -78,8 +78,10 @@ install_lock(){
 
 install_oh_my_zsh(){
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    source ~/.zshrc | zsh
+    #add default plugins to zsh
     add_plugins_oh_my_zsh
+    #changing to zsh
+    source ~/.zshrc | zsh
 }
 
 add_plugins_oh_my_zsh(){
