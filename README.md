@@ -16,9 +16,12 @@ Useful tools for linux environments
 
 # Requirements
 - User with sudo
+- Git (Optional)
 
 # Run Script
 ```
+# Download proyect (git clone https://github.com/fabidick22/default-linux-tools.git)
+cd default-linux-tools/
 /bin/bash install-tools.sh
 or 
 bash install-tools.sh
