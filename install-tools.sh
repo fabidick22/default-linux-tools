@@ -91,7 +91,7 @@ add_plugins_oh_my_zsh(){
         name_plugins+=" \n\t"$name
     done
     echo $name_plugins
-    ruta=~/"/.zshrcs"
+    ruta=~/".zshrcs"
     sed -i "s/  git/  $name_plugins/g" "$ruta"
 }
 
