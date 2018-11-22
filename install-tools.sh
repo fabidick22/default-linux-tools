@@ -80,8 +80,10 @@ install_oh_my_zsh(){
 #    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
     sed -i 's/  env zsh -l/ /g' "./install.sh"
+    sh ./install.sh
     #add default plugins to zsh
     add_plugins_oh_my_zsh
+    rm ./install.sh
     #iniciar zsh
     env zsh -l
     #changing to zsh
