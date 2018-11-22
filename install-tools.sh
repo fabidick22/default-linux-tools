@@ -79,24 +79,24 @@ install_lock(){
 install_oh_my_zsh(){
 #    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    #quit start zsh for add plugins
     sed -i 's/  env zsh -l/ /g' "./install.sh"
     sh ./install.sh
     #add default plugins to zsh
     add_plugins_oh_my_zsh
     rm ./install.sh
-    #iniciar zsh
+    #start zsh
     env zsh -l
-    #changing to zsh
-#    source ~/.zshrc | zsh
 }
 
 add_plugins_oh_my_zsh(){
     echo "Config plugins of oh my zsh"
+    echo "Plugins install:"
     for name in ${plugins_zsh[*]}
     do
+        echo_pass $name
         name_plugins+=" \n\t"$name
     done
-    echo $name_plugins
     ruta=~/".zshrc"
     sed -i "s/  git/  $name_plugins/g" "$ruta"
 }
