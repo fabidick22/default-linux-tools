@@ -91,7 +91,7 @@ install_oh_my_zsh(){
 
 add_plugins_oh_my_zsh(){
     echo "Config plugins of oh my zsh"
-    echo "Plugins install:"
+    echo "Plugins installed:"
     for name in ${plugins_zsh[*]}
     do
         echo_pass $name
