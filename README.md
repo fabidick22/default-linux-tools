@@ -26,6 +26,7 @@ cd default-linux-tools/
 or 
 bash install-tools.sh
  ```
+[![asciicast](https://asciinema.org/a/222088.svg)](https://asciinema.org/a/222088?autoplay=1)
 
 # OS Tested
 - Debian GNU/Linux 9 (stretch) 64-bit
